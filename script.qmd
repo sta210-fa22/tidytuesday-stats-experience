@@ -1,0 +1,59 @@
+---
+title: "TidyTuesday Challenge"
+author: "Lisa Zuo"
+date: "December 9, 2022"
+format: pdf
+editor: visual
+---
+
+## Load Data
+
+```{r warning=F, message=F}
+library(tidyverse)
+library(tidymodels)
+library(tidytuesdayR)
+tuesdata <- tt_load('2021-10-05')
+nurses <- tuesdata$nurses
+```
+
+## Data cleaning
+
+```{r}
+nurses <- nurses %>% 
+  rename(state = State,
+         year = Year,
+         total_employed = `Total Employed RN`,
+         employed_se = `Employed Standard Error (%)`,
+         avg_hourly = `Hourly Wage Avg`,
+         median_hourly = `Hourly Wage Median`,
+         avg_annual = `Annual Salary Avg`,
+         median_annual = `Annual Salary Median`,
+         wage_se = `Wage/Salary standard error (%)`,
+         perc_hourly_10 = `Hourly 10th Percentile`,
+         perc_hourly_25 = `Hourly 25th Percentile`,
+         perc_hourly_75 = `Hourly 75th Percentile`,
+         perc_hourly_90 = `Hourly 90th Percentile`,
+         perc_annual_10 = `Annual 10th Percentile`,
+         perc_annual_25 = `Annual 25th Percentile`,
+         perc_annual_75 = `Annual 75th Percentile`,
+         perc_annual_90 = `Annual 90th Percentile`,
+         location_quotient = `Location Quotient`,
+         total_employed_national_aggregate = 
+           `Total Employed (National)_Aggregate`,
+         total_employed_healthcare_national_aggregate = 
+           `Total Employed (Healthcare, National)_Aggregate`,
+         total_employed_healthcare_state_aggregate = 
+           `Total Employed (Healthcare, State)_Aggregate`,
+         yearly_total_employed_state_aggregate = 
+           `Yearly Total Employed (State)_Aggregate`)
+```
+
+
+
+## EDA
+
+```{r}
+str(nurses)
+```
+
+
